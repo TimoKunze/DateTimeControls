@@ -8,12 +8,12 @@
 
 #define VERSION_MAJOR																1
 #define VERSION_MINOR																5
-#define VERSION_REVISION1														2
+#define VERSION_REVISION1														3
 #define VERSION_REVISION2														0
-#define VERSION_BUILD																136
-#define STRFILEVERSION															"1.5.2.136"
+#define VERSION_BUILD																137
+#define STRFILEVERSION															"1.5.3.137"
 #define STRPRODUCTVERSION														"1.5"
-#define STRTIMESTAMP																"2018/01/09 20:38:29"
+#define STRTIMESTAMP																"2018/01/09 20:58:38"
 
 #define IDB_CALENDAR																1
 #define IDB_DATETIMEPICKER													2
