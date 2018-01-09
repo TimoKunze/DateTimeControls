@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'DTCtlsA'
+		'DTCtlsA.OCX'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

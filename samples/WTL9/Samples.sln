@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "General", "General", "{D64390A6-9D7B-4A32-B02D-90EE77807F1A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Events", "General\Events\Events.vcxproj", "{8FFD7FBC-0B37-403B-B667-474340F4A1A9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MultipleCalendars", "General\Multiple Calendars\MultipleCalendars.vcxproj", "{CDAA2A3E-283F-4D92-AA34-61B51F3A30FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8FFD7FBC-0B37-403B-B667-474340F4A1A9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8FFD7FBC-0B37-403B-B667-474340F4A1A9}.Debug|Win32.Build.0 = Debug|Win32
+		{8FFD7FBC-0B37-403B-B667-474340F4A1A9}.Release|Win32.ActiveCfg = Release|Win32
+		{8FFD7FBC-0B37-403B-B667-474340F4A1A9}.Release|Win32.Build.0 = Release|Win32
+		{CDAA2A3E-283F-4D92-AA34-61B51F3A30FF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CDAA2A3E-283F-4D92-AA34-61B51F3A30FF}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8FFD7FBC-0B37-403B-B667-474340F4A1A9} = {D64390A6-9D7B-4A32-B02D-90EE77807F1A}
+		{CDAA2A3E-283F-4D92-AA34-61B51F3A30FF} = {D64390A6-9D7B-4A32-B02D-90EE77807F1A}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,44 @@
+HKCR
+{
+	DTCtlsU.DateTimePicker.1 = s 'TimoSoft DateTimePicker Control 1.5 (Unicode)'
+	{
+		CLSID = s '{8D66A478-40D0-4bca-B704-BFF896EE31B1}'
+		'Insertable'
+	}
+	DTCtlsU.DateTimePicker = s 'TimoSoft DateTimePicker Control 1.5 (Unicode)'
+	{
+		CLSID = s '{8D66A478-40D0-4bca-B704-BFF896EE31B1}'
+		CurVer = s 'DTCtlsU.DateTimePicker.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {8D66A478-40D0-4bca-B704-BFF896EE31B1} = s 'TimoSoft DateTimePicker Control 1.5 (Unicode)'
+		{
+			ProgID = s 'DTCtlsU.DateTimePicker.1'
+			VersionIndependentProgID = s 'DTCtlsU.DateTimePicker'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Implemented Categories'
+			{
+				'{40FC6ED4-2438-11CF-A3DB-080036F12502}'
+				'{40FC6ED5-2438-11CF-A3DB-080036F12502}'
+				'{0DE86A57-2BAA-11CF-A229-00AA003D7352}'
+				'{0DE86A53-2BAA-11CF-A229-00AA003D7352}'
+				'{157083E1-2368-11cf-87B9-00AA006C8166}'
+			}
+			val AppID = s '%APPID%'
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 2'
+			'MiscStatus' = s '0'
+			{
+				'1' = s '%OLEMISC%'
+			}
+			'TypeLib' = s '{9812DC25-F663-48d3-AE15-E454712E6158}'
+			'Version' = s '1.5'
+		}
+	}
+}

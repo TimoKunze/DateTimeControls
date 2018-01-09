@@ -1,0 +1,44 @@
+Type=Exe
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\WINDOWS\system32\STDOLE2.TLB#OLE Automation
+Object={9812DC25-F663-48d3-AE15-E454712E6158}#1.5#0; DTCtlsU.ocx
+Form=frmMain.frm
+Module=basSubClassing; basSubClassing.bas
+Class=ISubclassedWindow; ISubclassedWindow.cls
+IconForm="frmMain"
+Startup="frmMain"
+HelpFile=""
+Title="CustomFormats"
+ExeName32="CustomFormats.exe"
+Path32="bin"
+Command32=""
+Name="CustomFormats"
+HelpContextID="0"
+CompatibleMode="0"
+MajorVer=1
+MinorVer=0
+RevisionVer=0
+AutoIncrementVer=0
+ServerSupportFiles=0
+VersionCompanyName="TimoSoft"
+VersionFileDescription="Custom Formats sample for TimoSoft DateTimeControls 1.5"
+VersionProductName="TimoSoft DateTimeControls 1.5"
+CondComp="UseSubClassing = 1"
+CompilationType=0
+OptimizationType=0
+FavorPentiumPro(tm)=0
+CodeViewDebugInfo=0
+NoAliasing=0
+BoundsCheck=0
+OverflowCheck=0
+FlPointCheck=0
+FDIVCheck=0
+UnroundedFP=0
+StartMode=0
+Unattended=0
+Retained=0
+ThreadPerObject=0
+MaxNumberOfThreads=1
+DebugStartupOption=0
+
+[MS Transaction Server]
+AutoRefresh=1

@@ -1,0 +1,136 @@
+Version 1.5.3 - DD/MM/YYYY
+
+- Project published on GitHub.
+
+
+
+Version 1.5.2 - 15/11/2016
+
+- Fixed some bugs in the DateTimePicker control that had consequences on Linux/Wine only.
+
+
+
+Version 1.5.1 - 29/01/2016
+
+- FIX: The controls could crash during OLE drag'n'drop.
+- FIX: The controls could crash the other process during OLE drag'n'drop, especially when IOLEDataObject::SetDropDescription() had been called.
+
+
+
+Version 1.5.0 - 22/01/2016
+
+- Added the FinishOLEDragDrop method to each control. It should not be used if not really needed. It can be used to hide the drag image if execution of the OLEDragDrop event takes a long time or if a message is displayed from within this event.
+- Initial support for Windows 10.
+
+
+
+Version 1.4.0 - 02/07/2014
+
+- Added the XClick, and XDblClick events for support of the extended mouse buttons.
+- Extended the Mouse* events to support the extended mouse buttons.
+- Added the MouseWheel events for handling mouse wheel rotations.
+- Reactivated data-binding capabilities. When the library is registered, it will call regtlib.exe msdatsrc.tlb before registering itself. This seems to fix the mess caused by the broken Windows Update from early 2013.
+- FIX: The Font and MouseIcon properties could leak GDI resources.
+- Initial support for Windows 8.1.
+
+
+
+Version 1.3.3 - 28/03/2013
+
+- FIX: The GetIdealSize method ignored the Appearance and BorderStyle properties.
+- Disabled data-binding capabilities as they cause "Object library not registered" errors when adding the control library to the project. This problem might be related to a recent Windows Update.
+
+
+
+Version 1.3.2 - 18/10/2012
+
+- FIX: If the _ICalendarEvents::ContextMenu or the _IDateTimePickerEvents::CalendarContextMenu event was triggered by keyboard input, it has been fired for the wrong date.
+- FIX: The ResizedControlWindow event was not fired when it should have been fired.
+- Initial support for Windows 8.
+
+
+
+Version 1.3.1 - 22/04/2012
+
+- FIX: Setting the ICalendar::MinDate property at runtime could reset the ICalendar::MaxDate property.
+- FIX: Setting the ICalendar::MaxDate property at runtime could reset the ICalendar::MinDate property.
+- FIX: Setting the IDateTimePicker::MinDate property at runtime could reset the IDateTimePicker::MaxDate property.
+- FIX: Setting the IDateTimePicker::MaxDate property at runtime could reset the IDateTimePicker::MinDate property.
+- Reimplemented the subclassing code of the VB6 samples to make it more robust.
+
+
+
+Version 1.3.0 - 01/11/2011
+
+- Added the ICalendar::DetectDoubleClicks property to completely deactivate double clicks and handle them as two single clicks instead. Attention: This property defaults to False!
+- Added the IDateTimePicker::DetectDoubleClicks property to completely deactivate double clicks and handle them as two single clicks instead.
+
+
+
+Version 1.2.2 - 20/05/2011
+
+- FIX: Disabling the controls did not move the keyboard focus to the next control in the tab order.
+- FIX: The ResizedControlWindow event was fired when actually nothing had changed.
+
+
+
+Version 1.2.1 - 26/01/2011
+
+- FIX: ICalendar::CaretDate could return invalid values.
+
+
+
+Version 1.2.0 - 07/01/2011
+
+- FIX: Due do a bug in Microsoft ATL, the controls could lose keyboard focus when they shouldn't. This problem occured in MDI applications only. Many thanks to Peter Schellenbach for his help.
+- Switched to Visual C++ 2010 and dropped support for Windows 2000.
+
+
+
+Version 1.1.3 - 18/10/2010
+
+- FIX: With version 5.x of comctl32.dll, clicking the drop-down button of the DateTimePicker control did not display the drop-down calendar, if the control did not already have the focus and the previously focussed control was e. g. a text box. This behavior was caused by a bug inside comctl32.dll.
+- FIX: Calling IDateTimePicker::CloseDropDownWindow could trigger keyboard events.
+
+
+
+Version 1.1.2 - 23/08/2010
+
+- Added a new property page that can be used to enter Unicode texts at design time.
+- FIX: Visual Basic 6 didn't raise the Validate event correctly.
+- FIX: The Calendar control had random days set to bold after the control window has been created.
+- FIX: The _IDateTimePickerEvents::GetCallbackFieldTextSize event sometimes was not raised when it should have been raised.
+- FIX: IOLEDataObject::SetDropDescription could cause crashes in other programs.
+
+
+
+Version 1.1.1 - 01/01/2010
+
+- Improved support for Aero drag images.
+- Improved performance.
+- FIX: If the controls were placed on a Form for which the KeyPreview feature was activated, the Form_Key* handler didn't receive key strokes like Alt+PgDown or Alt+Left, if the controls had the keyboard focus.
+- FIX: The 'shift' parameter that many events have, often missed the ALT key.
+- Deploy (stripped) symbols with the binaries to make debugging easier. This are the pdb files in case you wonder.
+
+
+
+Version 1.1.0 - 26/07/2009
+
+- Added the IDateTimePicker::Value property.
+- FIX: The _IDateTimePickerEvents::CurrentDateChanged was not raised when the IDateTimePicker::DateSelected property was changed.
+- Fixed a potential problem with persistance.
+
+
+
+Version 1.0.1 - 11/07/2009
+
+- FIX: The _IDateTimePickerEvents::ContextMenu event could get raised with wrong coordinates.
+- Fixed some small OLE drag'n'drop bugs.
+- Massively reduced the usage of GDI handles.
+- Made some internal changes that will make it easier for me to keep binary compatibility in future.
+
+
+
+Version 1.0.0 - 28/01/2009
+
+- First public release.

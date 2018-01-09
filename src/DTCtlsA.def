@@ -1,0 +1,9 @@
+; DTCtlsA.def: Declares the module parameters. (ANSI version)
+
+LIBRARY      "DTCtlsA.ocx"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

@@ -1,0 +1,44 @@
+HKCR
+{
+	DTCtlsA.Calendar.1 = s 'TimoSoft Calendar Control 1.5 (ANSI)'
+	{
+		CLSID = s '{B741D94E-C010-4d75-8C58-329D5A6AA470}'
+		'Insertable'
+	}
+	DTCtlsA.Calendar = s 'TimoSoft Calendar Control 1.5 (ANSI)'
+	{
+		CLSID = s '{B741D94E-C010-4d75-8C58-329D5A6AA470}'
+		CurVer = s 'DTCtlsA.Calendar.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B741D94E-C010-4d75-8C58-329D5A6AA470} = s 'TimoSoft Calendar Control 1.5 (ANSI)'
+		{
+			ProgID = s 'DTCtlsA.Calendar.1'
+			VersionIndependentProgID = s 'DTCtlsA.Calendar'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Implemented Categories'
+			{
+				'{40FC6ED4-2438-11CF-A3DB-080036F12502}'
+				'{40FC6ED5-2438-11CF-A3DB-080036F12502}'
+				'{0DE86A57-2BAA-11CF-A229-00AA003D7352}'
+				'{0DE86A53-2BAA-11CF-A229-00AA003D7352}'
+				'{157083E1-2368-11cf-87B9-00AA006C8166}'
+			}
+			val AppID = s '%APPID%'
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 1'
+			'MiscStatus' = s '0'
+			{
+				'1' = s '%OLEMISC%'
+			}
+			'TypeLib' = s '{19AD6CAB-F3B8-4c05-81A1-55135F225D05}'
+			'Version' = s '1.5'
+		}
+	}
+}

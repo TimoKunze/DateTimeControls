@@ -1,0 +1,23 @@
+The following parts of the SysDateTimePick32 API (Windows 10) are not used:
+
+
+
+The following parts of the SysMonthCal32 API (Windows 10) are not used:
+
+Messages:
+---------
+- MCM_GETCALID (https://msdn.microsoft.com/en-us/library/bb760951.aspx)
+	-> requires comctl32.dll 6.10 or newer
+	-> not clear what it is doing
+	-> can be used easily via SendMessage()
+- MCM_GETUNICODEFORMAT (https://msdn.microsoft.com/en-us/library/bb760989.aspx)
+	-> not needed
+	-> can be used easily via SendMessage()
+- MCM_SETCALID (https://msdn.microsoft.com/en-us/library/bb760995.aspx)
+	-> requires comctl32.dll 6.10 or newer
+	-> not clear what it is doing
+	-> can be used easily via SendMessage()
+- MCM_SETUNICODEFORMAT (https://msdn.microsoft.com/en-us/library/bb761018.aspx)
+	-> not needed
+	-> can be used easily via SendMessage()
+
