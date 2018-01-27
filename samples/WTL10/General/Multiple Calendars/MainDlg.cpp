@@ -73,9 +73,9 @@ LRESULT CMainDlg::OnWindowPosChanged(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lP
 		LPWINDOWPOS pDetails = reinterpret_cast<LPWINDOWPOS>(lParam);
 
 		if((pDetails->flags & SWP_NOSIZE) == 0) {
-			WTL::CRect clientRectangle;
+			CRect clientRectangle;
 			GetClientRect(&clientRectangle);
-			WTL::CRect aboutRectangle;
+			CRect aboutRectangle;
 			controls.aboutButton.GetWindowRect(&aboutRectangle);
 
 			OLE_XPOS_PIXELS left = 0;
@@ -104,7 +104,7 @@ LRESULT CMainDlg::OnWindowPosChanging(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM l
 			if(pDetails->cx < minimumMCWidth + 50) {
 				pDetails->cx = minimumMCWidth + 50;
 			}
-			WTL::CRect aboutRectangle;
+			CRect aboutRectangle;
 			controls.aboutButton.GetWindowRect(&aboutRectangle);
 			if(pDetails->cy < minimumMCHeight + aboutRectangle.Height() + 70) {
 				pDetails->cy = minimumMCHeight + aboutRectangle.Height() + 70;

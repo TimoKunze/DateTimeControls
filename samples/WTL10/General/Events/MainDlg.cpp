@@ -104,7 +104,7 @@ LRESULT CMainDlg::OnWindowPosChanged(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lP
 		LPWINDOWPOS pDetails = reinterpret_cast<LPWINDOWPOS>(lParam);
 
 		if((pDetails->flags & SWP_NOSIZE) == 0) {
-			WTL::CRect rc;
+			CRect rc;
 			pickerUWnd.GetWindowRect(&rc);
 			ScreenToClient(&rc);
 			pickerUWnd.MoveWindow(8, 8, rc.Width(), rc.Height());
@@ -118,7 +118,7 @@ LRESULT CMainDlg::OnWindowPosChanged(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lP
 			pickerAWnd.MoveWindow(rc.left, rc.top + minHeight + 11, rc.Width(), rc.Height());
 			calAWnd.MoveWindow(rc.right + 11, rc.top + minHeight + 11, minWidth, minHeight);
 
-			WTL::CRect clientRectangle;
+			CRect clientRectangle;
 			GetClientRect(&clientRectangle);
 			int x = rc.right + 11 + minWidth + 11;
 			controls.logEdit.MoveWindow(x, 0, clientRectangle.Width() - x, clientRectangle.Height() - 32);
