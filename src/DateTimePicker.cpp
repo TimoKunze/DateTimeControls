@@ -4998,7 +4998,7 @@ LRESULT DateTimePicker::OnSetCursor(LONG index, UINT /*message*/, WPARAM /*wPara
 	BOOL setCursor = FALSE;
 
 	// Are we really over the control?
-	WTL::CRect clientArea;
+	CRect clientArea;
 	if(index == 2) {
 		containedEdit.GetClientRect(&clientArea);
 		containedEdit.ClientToScreen(&clientArea);
@@ -5218,7 +5218,7 @@ LRESULT DateTimePicker::OnWindowPosChanged(UINT /*message*/, WPARAM /*wParam*/, 
 {
 	LPWINDOWPOS pDetails = reinterpret_cast<LPWINDOWPOS>(lParam);
 
-	WTL::CRect windowRectangle = m_rcPos;
+	CRect windowRectangle = m_rcPos;
 	/* Ugly hack: We depend on this message being sent without SWP_NOMOVE at least once, but this requirement
 	              not always will be fulfilled. Fortunately pDetails seems to contain correct x and y values
 	              even if SWP_NOMOVE is set.
@@ -6166,9 +6166,9 @@ inline HRESULT DateTimePicker::Raise_CalendarContextMenu(SHORT button, SHORT shi
 			if(properties.processContextMenuKeys) {
 				// TODO: If we find a way to retrieve the caret date's rectangle, then use it.
 				// retrieve the caret item and propose its rectangle's middle as the menu's position
-				WTL::CRect clientRectangle;
+				CRect clientRectangle;
 				containedCalendar.GetClientRect(&clientRectangle);
-				WTL::CPoint centerPoint = clientRectangle.CenterPoint();
+				CPoint centerPoint = clientRectangle.CenterPoint();
 				x = centerPoint.x;
 				y = centerPoint.y;
 				hitTestDetails = htCalendar;
@@ -6247,8 +6247,8 @@ inline HRESULT DateTimePicker::Raise_CalendarContextMenu(SHORT button, SHORT shi
 								gridInfo.iCol = columnIndex;
 								gridInfo.iRow = rowIndex;
 								if(containedCalendar.SendMessage(MCM_GETCALENDARGRIDINFO, 0, reinterpret_cast<LPARAM>(&gridInfo))) {
-									WTL::CRect rc(&gridInfo.rc);
-									WTL::CPoint centerPoint = rc.CenterPoint();
+									CRect rc(&gridInfo.rc);
+									CPoint centerPoint = rc.CenterPoint();
 									x = centerPoint.x;
 									y = centerPoint.y;
 									dontUsePosition = FALSE;
@@ -6775,9 +6775,9 @@ inline HRESULT DateTimePicker::Raise_ContextMenu(SHORT button, SHORT shift, OLE_
 			// the event was caused by the keyboard
 			if(properties.processContextMenuKeys) {
 				// propose the middle of the control's client rectangle as the menu's position
-				WTL::CRect clientRectangle;
+				CRect clientRectangle;
 				GetClientRect(&clientRectangle);
-				WTL::CPoint centerPoint = clientRectangle.CenterPoint();
+				CPoint centerPoint = clientRectangle.CenterPoint();
 				x = centerPoint.x;
 				y = centerPoint.y;
 			} else {
@@ -6803,7 +6803,7 @@ inline HRESULT DateTimePicker::Raise_CreatedCalendarControlWindow(LONG hWndCalen
 		containedCalendar.SendMessage(MCM_SETCURRENTVIEW, 0, properties.calendarView);
 	} else {
 		containedCalendar.ModifyStyle(MCS_MASK, properties.calendarStyle);
-		WTL::CRect minimumRectangle;
+		CRect minimumRectangle;
 		if(containedCalendar.SendMessage(MCM_GETMINREQRECT, 0, reinterpret_cast<LPARAM>(&minimumRectangle))) {
 			// Wine moves the rectangle to (0,0), so don't assume we have a top-left position.
 			//containedCalendar.MoveWindow(&minimumRectangle, FALSE);

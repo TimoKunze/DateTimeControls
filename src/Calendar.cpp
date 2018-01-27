@@ -3312,7 +3312,7 @@ STDMETHODIMP Calendar::GetMaxTodayWidth(OLE_XSIZE_PIXELS* pWidth)
 STDMETHODIMP Calendar::GetMinimumSize(OLE_XSIZE_PIXELS* pWidth/* = NULL*/, OLE_YSIZE_PIXELS* pHeight/* = NULL*/)
 {
 	if(IsWindow()) {
-		WTL::CRect minimumRectangle;
+		CRect minimumRectangle;
 		if(SendMessage(MCM_GETMINREQRECT, 0, reinterpret_cast<LPARAM>(&minimumRectangle))) {
 			if(pWidth) {
 				*pWidth = minimumRectangle.Width();
@@ -3903,7 +3903,7 @@ LRESULT Calendar::OnSetCursor(UINT /*message*/, WPARAM /*wParam*/, LPARAM /*lPar
 	BOOL setCursor = FALSE;
 
 	// Are we really over the control?
-	WTL::CRect clientArea;
+	CRect clientArea;
 	GetClientRect(&clientArea);
 	ClientToScreen(&clientArea);
 	DWORD position = GetMessagePos();
@@ -4104,7 +4104,7 @@ LRESULT Calendar::OnWindowPosChanged(UINT /*message*/, WPARAM /*wParam*/, LPARAM
 {
 	LPWINDOWPOS pDetails = reinterpret_cast<LPWINDOWPOS>(lParam);
 
-	WTL::CRect windowRectangle = m_rcPos;
+	CRect windowRectangle = m_rcPos;
 	/* Ugly hack: We depend on this message being sent without SWP_NOMOVE at least once, but this requirement
 	              not always will be fulfilled. Fortunately pDetails seems to contain correct x and y values
 	              even if SWP_NOMOVE is set.
@@ -4397,9 +4397,9 @@ inline HRESULT Calendar::Raise_ContextMenu(SHORT button, SHORT shift, OLE_XPOS_P
 			dontUsePosition = TRUE;
 			if(properties.processContextMenuKeys) {
 				// retrieve the caret item and propose its rectangle's middle as the menu's position
-				WTL::CRect clientRectangle;
+				CRect clientRectangle;
 				GetClientRect(&clientRectangle);
-				WTL::CPoint centerPoint = clientRectangle.CenterPoint();
+				CPoint centerPoint = clientRectangle.CenterPoint();
 				x = centerPoint.x;
 				y = centerPoint.y;
 				hitTestDetails = htCalendar;
@@ -4478,8 +4478,8 @@ inline HRESULT Calendar::Raise_ContextMenu(SHORT button, SHORT shift, OLE_XPOS_P
 								gridInfo.iCol = columnIndex;
 								gridInfo.iRow = rowIndex;
 								if(SendMessage(MCM_GETCALENDARGRIDINFO, 0, reinterpret_cast<LPARAM>(&gridInfo))) {
-									WTL::CRect rc(&gridInfo.rc);
-									WTL::CPoint centerPoint = rc.CenterPoint();
+									CRect rc(&gridInfo.rc);
+									CPoint centerPoint = rc.CenterPoint();
 									x = centerPoint.x;
 									y = centerPoint.y;
 									dontUsePosition = FALSE;
