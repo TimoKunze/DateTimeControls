@@ -3387,15 +3387,15 @@ STDMETHODIMP Calendar::HitTest(OLE_XPOS_PIXELS x, OLE_YPOS_PIXELS y, HitTestCons
 	}
 
 	if(IsWindow()) {
-		UINT flags = static_cast<UINT>(*pHitTestDetails);
+		UINT hitTestFlags = static_cast<UINT>(*pHitTestDetails);
 		int hitCalendar = 0;
 		int hitColumn = 0;
 		int hitRow = 0;
 		RECT hitCell = {0};
 
-		*pHitDate = HitTest(x, y, &flags, &hitCalendar, &hitColumn, &hitRow, &hitCell);
+		*pHitDate = HitTest(x, y, &hitTestFlags, &hitCalendar, &hitColumn, &hitRow, &hitCell);
 		if(pHitTestDetails) {
-			*pHitTestDetails = static_cast<HitTestConstants>(flags);
+			*pHitTestDetails = static_cast<HitTestConstants>(hitTestFlags);
 		}
 		if(pIndexOfHitCalendar) {
 			*pIndexOfHitCalendar = hitCalendar;
@@ -4479,7 +4479,7 @@ inline HRESULT Calendar::Raise_ContextMenu(SHORT button, SHORT shift, OLE_XPOS_P
 								gridInfo.iRow = rowIndex;
 								if(SendMessage(MCM_GETCALENDARGRIDINFO, 0, reinterpret_cast<LPARAM>(&gridInfo))) {
 									CRect rc(&gridInfo.rc);
-									CPoint centerPoint = rc.CenterPoint();
+									centerPoint = rc.CenterPoint();
 									x = centerPoint.x;
 									y = centerPoint.y;
 									dontUsePosition = FALSE;
@@ -5154,15 +5154,15 @@ void Calendar::SendConfigurationMessages(void)
 	ZeroMemory(boundaryTimes, 2 * sizeof(SYSTEMTIME));
 	VariantTimeToSystemTime(properties.minDate, &boundaryTimes[0]);
 	VariantTimeToSystemTime(properties.maxDate, &boundaryTimes[1]);
-	DWORD flags = 0;
+	DWORD rangeFlags = 0;
 	if(!(boundaryTimes[0].wYear == 1752 && boundaryTimes[0].wMonth == 9 && boundaryTimes[0].wDay == 14)) {
-		flags |= GDTR_MIN;
+		rangeFlags |= GDTR_MIN;
 	}
 	if(!(boundaryTimes[1].wYear == 9999 && boundaryTimes[1].wMonth == 12 && boundaryTimes[1].wDay == 31/* && boundaryTimes[1].wHour == 23 && boundaryTimes[1].wMinute == 59 && boundaryTimes[1].wSecond == 59*/)) {
-		flags |= GDTR_MAX;
+		rangeFlags |= GDTR_MAX;
 	}
-	if(flags) {
-		SendMessage(MCM_SETRANGE, flags, reinterpret_cast<LPARAM>(&boundaryTimes));
+	if(rangeFlags) {
+		SendMessage(MCM_SETRANGE, rangeFlags, reinterpret_cast<LPARAM>(&boundaryTimes));
 	}
 
 	SendMessage(MCM_SETCOLOR, MCSC_BACKGROUND, OLECOLOR2COLORREF(properties.backColor));
@@ -5281,12 +5281,12 @@ DATE Calendar::HitTest(LONG x, LONG y, PUINT pFlags)
 	hitTestInfo.cbSize = RunTimeHelper::SizeOf_MCHITTESTINFO();
 	hitTestInfo.pt.x = x;
 	hitTestInfo.pt.y = y;
-	UINT flags = SendMessage(MCM_HITTEST, 0, reinterpret_cast<LPARAM>(&hitTestInfo));
+	UINT hitTestFlags = SendMessage(MCM_HITTEST, 0, reinterpret_cast<LPARAM>(&hitTestInfo));
 	if(pFlags) {
-		*pFlags = flags/*hitTestInfo.uHit*/;
+		*pFlags = hitTestFlags/*hitTestInfo.uHit*/;
 	}
 	DATE date = 0;
-	if((flags & MCHT_CALENDAR) == MCHT_CALENDAR && (flags & MCHT_TODAYLINK) != MCHT_TODAYLINK) {
+	if((hitTestFlags & MCHT_CALENDAR) == MCHT_CALENDAR && (hitTestFlags & MCHT_TODAYLINK) != MCHT_TODAYLINK) {
 		SystemTimeToVariantTime(&hitTestInfo.st, &date);
 	}
 	return date;
@@ -5300,10 +5300,10 @@ DATE Calendar::HitTest(LONG x, LONG y, PUINT pFlags, PINT pIndexOfHitCalendar, P
 	hitTestInfo.cbSize = RunTimeHelper::SizeOf_MCHITTESTINFO();
 	hitTestInfo.pt.x = x;
 	hitTestInfo.pt.y = y;
-	UINT flags = SendMessage(MCM_HITTEST, 0, reinterpret_cast<LPARAM>(&hitTestInfo));
-	*pFlags = flags/*hitTestInfo.uHit*/;
+	UINT hitTestFlags = SendMessage(MCM_HITTEST, 0, reinterpret_cast<LPARAM>(&hitTestInfo));
+	*pFlags = hitTestFlags/*hitTestInfo.uHit*/;
 	DATE date = 0;
-	if((flags & MCHT_CALENDAR) == MCHT_CALENDAR && (flags & MCHT_TODAYLINK) != MCHT_TODAYLINK) {
+	if((hitTestFlags & MCHT_CALENDAR) == MCHT_CALENDAR && (hitTestFlags & MCHT_TODAYLINK) != MCHT_TODAYLINK) {
 		SystemTimeToVariantTime(&hitTestInfo.st, &date);
 	}
 
